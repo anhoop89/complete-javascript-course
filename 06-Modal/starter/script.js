@@ -24,6 +24,15 @@ for (let x = 0; x < btnOpenModal.length; x++) {
   btnOpenModal[x].addEventListener('click',openModal);
 }
 
-
 btnCloseModal.addEventListener('click', closeModal);
 overlay.addEventListener('click', closeModal);
+
+// escape - keyboard event
+// e stands for event
+document.addEventListener('keydown', function (e) {
+  if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+    console.log('A key was pressed!', e.key);
+    console.log('escape key to close the modal');
+    closeModal();
+  }
+});
