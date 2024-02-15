@@ -102,7 +102,7 @@ const game = {
     ['Liam', 'Olivia', 'Noah', 'Ava'] // Substitute players
   ],
   score:'4:0',
-  scored: ['John', 'Sophia', 'Michael', 'David'],
+  scored: ['John', 'Sophia', 'Michael', 'David','John','John','John'],
   date: '2024-02-14', // Date of the game
   odds: {
     team1: 2.5,
@@ -117,4 +117,36 @@ for (const [index, name] of game.scored.entries()) {
   console.log(`Goal ${index + 1} : ${name}`);
 }
 
+
+
 // use a loop to calculate the average odd and log it to the console
+let sum = 0;
+for (const item of Object.values(game.odds)) {
+  sum += item; 
+}
+
+let avg = sum / Object.values(game.odds).length; 
+console.log(Object.values(game.odds));
+
+console.log(sum, avg);
+
+
+//3 
+for (const [team, odd] of Object.entries(game.odds)) {
+  console.log(team, odd);
+  const teamStr = team === 'x' ? 'draw' : `victory ${game[team]}`; 
+  console.log(`Odd of ${teamStr} ${odd}`);
+}
+
+const scorers = {
+
+}
+
+for ( const player of game.scored) {
+  scorers[player] ? scorers[player]++ : (scorers[player] = 1);
+}
+console.log(scorers);
+
+
+// set : add , delete, size
+// map  | map.set, map.get, size 
