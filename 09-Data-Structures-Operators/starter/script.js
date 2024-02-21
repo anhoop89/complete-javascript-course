@@ -191,3 +191,22 @@ console.log("display events: ", events);
 gameEvents.delete(64);
 
 console.log(gameEvents);
+//3. Print the following string to the console: "An event happened, 
+//on average, every 9 minutes" (keep in mind that a game has 90 minutes)
+
+console.log(`An event happened, on average, every ${90/gameEvents.size} minutes`);
+
+const time = [...gameEvents.keys()].pop()
+// pop(). it takes the value of the last element from the array
+
+console.log(time);
+
+console.log(`An event happened, on average, every ${time/gameEvents.size} minutes `);
+
+//4
+for (const [min, event] of gameEvents) {
+  const half = min <= 45 ? 'FIRST' : 'SECOD';
+  console.log(`[${half} HALF] ${min}: ${event}`);
+  
+}
+
