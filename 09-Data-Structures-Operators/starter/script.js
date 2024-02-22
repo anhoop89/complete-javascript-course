@@ -210,3 +210,24 @@ for (const [min, event] of gameEvents) {
   
 }
 
+//  learning string
+const airline = 'TAP Air Portugal';
+const plane = 'A320';
+
+console.log(plane[0]);
+
+console.log(airline.indexOf('r'));
+console.log(airline.lastIndexOf('r'));
+console.log(airline.slice(4));
+// get string from the index 4 to before 7
+console.log((airline.slice(4,7)));
+console.log(airline.slice(0, airline.indexOf(' ')));
+console.log((airline.slice(airline.lastIndexOf(' ') + 1)));
+
+console.log(airline.slice(-2));
+console.log(airline.slice(1,-1));
+
+const checkMiddleSeat = function (seat) {
+  
+}
+
