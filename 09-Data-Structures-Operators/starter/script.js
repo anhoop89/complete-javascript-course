@@ -228,6 +228,67 @@ console.log(airline.slice(-2));
 console.log(airline.slice(1,-1));
 
 const checkMiddleSeat = function (seat) {
+  const s = seat.slice(-1);
+  console.log(s);
+  
+  if (s === 'B' || s === 'E')
+    console.log(`${seat} seating in the middle!`);
+  else
+    console.log(`${seat} seating outside`);
+    
+    
+}
+
+checkMiddleSeat('11B');
+checkMiddleSeat('11E');
+checkMiddleSeat('11F');
+console.log(airline.toLowerCase());
+console.log(airline.toUpperCase());
+
+const passenger = 'jOnAS';
+
+let correct = passenger.toLowerCase();
+
+correct = correct[0].toUpperCase() + correct.slice(1);
+
+console.log(correct);
+
+
+const checkTrim = 'abc    '; 
+
+const trueTrum = 'abc';
+
+console.log(checkTrim.trim() === trueTrum);
+
+const capitalizeName = function (name) {
+  const names = name.split(' ');
+  let update_temp = [];
+  for (const n of names) {
+    // 1st method
+    // update_temp.push(element[0].toUpperCase() + element.slice(1));
+    // 2nd method
+    update_temp.push(n.replace(n[0], n[0].toUpperCase()));
+  }
+  console.log(names);
+  console.log(update_temp.join(' '));
   
 }
 
+capitalizeName('anh ho jessie le');
+
+
+//padding
+
+const msg = 'go to gate 23';
+console.log(msg.padStart(25, '+').padEnd(30,'+'));
+
+
+const masterCard = function(number) {
+  const str = number + '';
+  const last = str.slice(-4);
+  console.log(str);
+  
+  console.log(last.padStart(str.length, '*'));
+  
+}
+masterCard(1234567895555);
