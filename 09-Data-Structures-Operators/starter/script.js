@@ -41,19 +41,26 @@ const openingHours = {
     open: 0, // Open 24 hours
     close: 24,
   },
+
 };
+
 
 const menu = {
   food: ['banh beo', 'banh canh'],
   drink: ['cocoa', 'sprite'],
   capacity: 100,
-  // es6 enhanced obj literals
-  openingHours,
-  // new syntax function
-  order(foodIndex = 0, drinnkIndex = 0) {
-    console.log('food order: ', this.food[foodIndex], this.drink[drinnkIndex]);
-  },
+    // es6 enhanced obj literals
+    openingHours,
+    // new syntax function
+    order(foodIndex = 0, drinnkIndex = 0) {
+      console.log("food order: ", this.food[foodIndex], this.drink[drinnkIndex]);
+      
+    }
 };
+
+
+
+
 
 console.log('menu food: ', menu.food);
 
@@ -81,9 +88,10 @@ for (const [index, content] of combineFoodandDrink.entries()) {
 
 console.log(menu);
 
-menu.order(1, 0);
+menu.order(1,0);
 
 console.log(menu.openingHours['fri']);
+
 
 const game = {
   team1: 'anh ho',
@@ -91,16 +99,16 @@ const game = {
   players: [
     ['John', 'Alice', 'Michael', 'Emily'], // Team 1 players
     ['David', 'Sophia', 'Emma', 'Daniel'], // Team 2 players
-    ['Liam', 'Olivia', 'Noah', 'Ava'], // Substitute players
+    ['Liam', 'Olivia', 'Noah', 'Ava'] // Substitute players
   ],
-  score: '4:0',
-  scored: ['John', 'Sophia', 'Michael', 'David', 'John', 'John', 'John'],
+  score:'4:0',
+  scored: ['John', 'Sophia', 'Michael', 'David','John','John','John'],
   date: '2024-02-14', // Date of the game
   odds: {
     team1: 2.5,
     x: 3.0,
-    team2: 2.8,
-  },
+    team2: 2.8
+  }
 };
 
 console.log(game);
@@ -109,35 +117,45 @@ for (const [index, name] of game.scored.entries()) {
   console.log(`Goal ${index + 1} : ${name}`);
 }
 
+
+
 // use a loop to calculate the average odd and log it to the console
 let sum = 0;
 for (const item of Object.values(game.odds)) {
-  sum += item;
+  sum += item; 
 }
 
-let avg = sum / Object.values(game.odds).length;
+let avg = sum / Object.values(game.odds).length; 
 console.log(Object.values(game.odds));
 
 console.log(sum, avg);
 
-//3
+
+//3 
 for (const [team, odd] of Object.entries(game.odds)) {
   console.log(team, odd);
-  const teamStr = team === 'x' ? 'draw' : `victory ${game[team]}`;
+  const teamStr = team === 'x' ? 'draw' : `victory ${game[team]}`; 
   console.log(`Odd of ${teamStr} ${odd}`);
 }
 
-const scorers = {};
+const scorers = {
 
-for (const player of game.scored) {
+}
+
+for ( const player of game.scored) {
   scorers[player] ? scorers[player]++ : (scorers[player] = 1);
 }
 console.log(scorers);
 
-// set : add , delete, size
-// map  | map.set, map.get, size
 
-const question = new Map([['question', ''], []]);
+// set : add , delete, size
+// map  | map.set, map.get, size 
+
+const question = new Map ([
+  ['question', ''],
+  [],
+
+])
 
 const gameEvents = new Map([
   [17, '⚽️ GOAL'],
@@ -168,31 +186,28 @@ GOOD LUCK 😀
 */
 
 const events = [...new Set(gameEvents.values())];
-console.log('display events: ', events);
+console.log("display events: ", events);
 
 gameEvents.delete(64);
 
 console.log(gameEvents);
-//3. Print the following string to the console: "An event happened,
+//3. Print the following string to the console: "An event happened, 
 //on average, every 9 minutes" (keep in mind that a game has 90 minutes)
 
-console.log(
-  `An event happened, on average, every ${90 / gameEvents.size} minutes`
-);
+console.log(`An event happened, on average, every ${90/gameEvents.size} minutes`);
 
-const time = [...gameEvents.keys()].pop();
+const time = [...gameEvents.keys()].pop()
 // pop(). it takes the value of the last element from the array
 
 console.log(time);
 
-console.log(
-  `An event happened, on average, every ${time / gameEvents.size} minutes `
-);
+console.log(`An event happened, on average, every ${time/gameEvents.size} minutes `);
 
 //4
 for (const [min, event] of gameEvents) {
   const half = min <= 45 ? 'FIRST' : 'SECOD';
   console.log(`[${half} HALF] ${min}: ${event}`);
+  
 }
 
 //  learning string
@@ -205,20 +220,24 @@ console.log(airline.indexOf('r'));
 console.log(airline.lastIndexOf('r'));
 console.log(airline.slice(4));
 // get string from the index 4 to before 7
-console.log(airline.slice(4, 7));
+console.log((airline.slice(4,7)));
 console.log(airline.slice(0, airline.indexOf(' ')));
-console.log(airline.slice(airline.lastIndexOf(' ') + 1));
+console.log((airline.slice(airline.lastIndexOf(' ') + 1)));
 
 console.log(airline.slice(-2));
-console.log(airline.slice(1, -1));
+console.log(airline.slice(1,-1));
 
 const checkMiddleSeat = function (seat) {
   const s = seat.slice(-1);
   console.log(s);
-
-  if (s === 'B' || s === 'E') console.log(`${seat} seating in the middle!`);
-  else console.log(`${seat} seating outside`);
-};
+  
+  if (s === 'B' || s === 'E')
+    console.log(`${seat} seating in the middle!`);
+  else
+    console.log(`${seat} seating outside`);
+    
+    
+}
 
 checkMiddleSeat('11B');
 checkMiddleSeat('11E');
@@ -234,7 +253,8 @@ correct = correct[0].toUpperCase() + correct.slice(1);
 
 console.log(correct);
 
-const checkTrim = 'abc    ';
+
+const checkTrim = 'abc    '; 
 
 const trueTrum = 'abc';
 
@@ -251,29 +271,35 @@ const capitalizeName = function (name) {
   }
   console.log(names);
   console.log(update_temp.join(' '));
-};
+  
+}
 
 capitalizeName('anh ho jessie le');
+
 
 //padding
 
 const msg = 'go to gate 23';
-console.log(msg.padStart(25, '+').padEnd(30, '+'));
+console.log(msg.padStart(25, '+').padEnd(30,'+'));
 
-const masterCard = function (number) {
+
+const masterCard = function(number) {
   const str = number + '';
   const last = str.slice(-4);
   console.log(str);
-
+  
   console.log(last.padStart(str.length, '*'));
-};
+  
+}
 masterCard(1234567895555);
 
 // repeat
 
-const msg2 = 'hello .... ';
+const msg2 = 'hello .... '
 
 console.log(msg2.repeat(5));
+
+
 
 /* 
 Write a program that receives a list of variable names written in underscore_case and convert them to camelCase.
@@ -311,18 +337,20 @@ document.body.append(document.createElement('textarea'));
 
 document.body.append(document.createElement('button'));
 
-document.querySelector('button').addEventListener('click', function () {
+
+
+document.querySelector('button').addEventListener('click', function() {
   const text = document.querySelector('textarea').value;
-  const rows = text.split('\n');
+  const rows = text.split('\n')
   console.log(rows);
-  for (const row of rows) {
+
+  for (const[index, row] of rows.entries() ) {
+    
     const [first, second] = row.toLowerCase().trim().split('_');
 
-    const output = `${first}${second.replace(
-      second[0],
-      second[0].toUpperCase()
-    )}`;
-    console.log(first, '===========', second);
-    console.log(output);
+    const output  =`${first}${second.replace(second[0], second[0].toUpperCase())}`
+    console.log(first, '===========',second);
+    console.log(` ${output.padEnd(20)} ${'✔'.repeat(index + 1)}`);
   }
-});
+
+})
