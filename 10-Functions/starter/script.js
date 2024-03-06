@@ -129,13 +129,16 @@ const poll = {
   option: ['0: JavaScript', '1: Python', '2: Rust', '3: C++'],
   answers: new Array(4).fill(0),
   registerNewAnswer() {
-    const answer = prompt(
+    const answer = Number(prompt(
       `${this.question} \n ${this.option.join('\n')} \n(Write option number)`
-    );
-    console.log(answer);
+    ));
+    
+    console.log(answer,typeof(answer));
     //    register answer
 
-    typeof answer === 'number' && answer < this.answers.length && this.answers[answer]++;
+    typeof answer === 'number' &&
+      answer < this.answers.length &&
+      this.answers[answer]++;
     
     this.displayResults();
     this.displayResults('string')
@@ -155,5 +158,4 @@ const poll = {
 
 document
   .querySelector('.poll')
-  .addEventListener('click', poll.registerNewAnswer());
-2
+  .addEventListener('click', poll.registerNewAnswer.bind(poll));
