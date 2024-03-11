@@ -41,7 +41,6 @@ const swiss = {
     bookings: [],
 }
 
-
 book.call(swiss, 1111111, 'Swisssssss ssss')
 console.log(swiss);
 
@@ -159,3 +158,7 @@ const poll = {
 document
   .querySelector('.poll')
   .addEventListener('click', poll.registerNewAnswer.bind(poll));
+
+// { answers: [5, 2, 3]} here is to be passed as this function 
+// allows you to call a function with a specified this value 
+poll.displayResults.call({ answers: [5, 2, 3]},'string')
