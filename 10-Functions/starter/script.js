@@ -162,3 +162,23 @@ document
 // { answers: [5, 2, 3]} here is to be passed as this function 
 // allows you to call a function with a specified this value 
 poll.displayResults.call({ answers: [5, 2, 3]},'string')
+
+// learning async and wait
+// immediately invoked function expressions
+
+const runOnce = function () {
+  console.log('this will never run again!');  
+};
+
+runOnce();
+//  this pattern that is IIFE immediately invoked function expressions
+(function() {
+  console.log('this will never run again!'); 
+  
+})();
+
+//  also worked for arrow function
+
+(()=>   console.log('this will never run again!')) ();
+
+// clousers
