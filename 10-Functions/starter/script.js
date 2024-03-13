@@ -192,9 +192,52 @@ const secureBooking = function () {
     
   }
 }
-
+//  return function from secureBooking function will
+//  be stored into the booker
 const booker = secureBooking();
 
 booker();
 booker();
 booker();
+
+
+
+//  apply closuser for local storage
+function createStorage(key) {
+  const store = JSON.parse(localStorage.getItem(key)) ?? {}
+
+  const save  = () => {
+    localStorage.setItem(key, JSON.stringify(store))
+  }
+
+  const storage = {
+    get(key) {
+      return store[key]
+    },
+    set (key, value) {
+      store[key] = value
+      save()
+    },
+    remove(key) {
+      delete store[key]
+      save()
+    }
+  }
+
+  return storage
+}
+// big scope createStorage
+//profileSetting will call the function named storage because of the return
+const profileSetting = createStorage('profile_setting');
+console.log(profileSetting.get('fullName'));
+
+profileSetting.set('fullName', 'Anh Ho')
+profileSetting.set('Age', '26');
+profileSetting.set('Address', 'abc xyz');
+
+
+profileSetting.set('fullName', 'Anh Ho 2222');
+profileSetting.set('Age', '262222');
+profileSetting.set('Address', 'abc xyz222');
+
+// note I can understand closures like a class
