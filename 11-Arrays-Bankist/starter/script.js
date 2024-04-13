@@ -71,7 +71,7 @@ const currencies = new Map([
   ['GBP', 'Pound sterling'],
 ]);
 
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
 let arr = ['a', 'b', 'c', 'd', 'e']
@@ -105,3 +105,40 @@ console.log([...arr, ...arr2]);
 
 // JOIN
 console.log(letter.join(' - '))
+
+// slice method
+// at method
+
+
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+//  learning about the loop
+for (const movement of movements) {
+  if (movement > 0) {
+    console.log(`you deposited:  ${movement}`)
+  } else  
+    console.log(`you withdrew: ${ Math.abs(movement) }`)
+}
+console.log(` ==== different to display with an index ===`)
+//  [i, movement] : orders matter including current index, current value
+// we need to use .entries() instead
+for (const [i,movement] of movements.entries()) {
+  if (movement > 0) {
+    console.log(`${i+1} you deposited:  ${movement}`)
+  } else
+    console.log(`${i + 1} you withdrew: ${Math.abs(movement)}`)
+}
+
+
+console.log("---- FOREACH ---")
+// how to use forEach method - using a callback function
+// .forEach(callback function)
+// parameter of the callback function matters
+// function(movement, i , array) 
+//          current value, current index, current array we looping
+movements.forEach(function (movement,i, array) {
+  if (movement > 0) {
+    console.log(`ForEach ${i + 1} - you deposited:  ${movement}`)
+  } else
+    console.log(`ForEach ${i + 1}- you withdrew: ${Math.abs(movement)}`)
+})
