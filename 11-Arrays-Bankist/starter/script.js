@@ -74,3 +74,34 @@ const currencies = new Map([
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
+let arr = ['a', 'b', 'c', 'd', 'e']
+console.log(arr);
+
+// SLICE Method : select element 
+// not mutate the orginal array
+console.log("slice 2 ", arr.slice(2))
+console.log("slice 2 5",arr.slice(2, 5));
+console.log(arr.slice(-2));
+console.log(arr.slice(-1));
+console.log(arr.slice(1, -2));
+console.log("shadow copy: ", [...arr]);
+
+// SPLICE : remove the element out of the arrr
+// mutate the orginal array
+arr.splice(-1);
+console.log(arr.splice(2));
+console.log(arr);
+
+// REVERSE
+arr = ['a', 'b', 'c', 'd', 'e']
+const arr2 = ['j', 'i', 'h', 'g', 'f'];
+console.log(arr2.reverse());
+
+// CONCAT 
+// append the letters from arr and arr2 to letter
+const letter = arr.concat(arr2);
+console.log(letter);
+console.log([...arr, ...arr2]);
+
+// JOIN
+console.log(letter.join(' - '))
