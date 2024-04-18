@@ -80,113 +80,131 @@ const displayMovements = function (movements) {
 
 displayMovements(account1.movements);
 
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+const eurToUsd = 1.1;
 
-/////////////////////////////////////////////////
-/////////////////////////////////////////////////
-// LECTURES
+// const movementsUSD = movements.map(function (mov) {
+//   return mov * eurToUsd
+// })
+
+const movementsUSD = movements.map(mov =>  mov * eurToUsd )
+
+console.log(movements)
+console.log(movementsUSD)
+
+const movementsUSDfor = []
+
+for (const mov of movements) movementsUSDfor.push(mov * eurToUsd);
+
+const movementsDescriptions = movements.map((mov, i) => 
+  `Movement ${i + 1}: You ${mov > 0 ? 'deposited' : 'withdrew'} ${Math.abs(mov)}`
+)
+console.log(movementsDescriptions)
+// /////////////////////////////////////////////////
+// /////////////////////////////////////////////////
+// // LECTURES
+
+// // const currencies = new Map([
+// //   ['USD', 'United States dollar'],
+// //   ['EUR', 'Euro'],
+// //   ['GBP', 'Pound sterling'],
+// // ]);
+
+// // const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+// /////////////////////////////////////////////////
+// let arr = ['a', 'b', 'c', 'd', 'e']
+// console.log(arr);
+
+// // SLICE Method : select element 
+// // not mutate the orginal array
+// console.log("slice 2 ", arr.slice(2))
+// console.log("slice 2 5",arr.slice(2, 5));
+// console.log(arr.slice(-2));
+// console.log(arr.slice(-1));
+// console.log(arr.slice(1, -2));
+// console.log("shadow copy: ", [...arr]);
+
+// // SPLICE : remove the element out of the arrr
+// // mutate the orginal array
+// arr.splice(-1);
+// console.log(arr.splice(2));
+// console.log(arr);
+
+// // REVERSE
+// arr = ['a', 'b', 'c', 'd', 'e']
+// const arr2 = ['j', 'i', 'h', 'g', 'f'];
+// console.log(arr2.reverse());
+
+// // CONCAT 
+// // append the letters from arr and arr2 to letter
+// const letter = arr.concat(arr2);
+// console.log(letter);
+// console.log([...arr, ...arr2]);
+
+// // JOIN
+// console.log(letter.join(' - '))
+
+// // slice method
+// // at method
+
+
+
+// //  learning about the loop
+// for (const movement of movements) {
+//   if (movement > 0) {
+//     console.log(`you deposited:  ${movement}`)
+//   } else  
+//     console.log(`you withdrew: ${ Math.abs(movement) }`)
+// }
+// console.log(` ==== different to display with an index ===`)
+// //  [i, movement] : orders matter including current index, current value
+// // we need to use .entries() instead
+// for (const [i,movement] of movements.entries()) {
+//   if (movement > 0) {
+//     console.log(`${i+1} you deposited:  ${movement}`)
+//   } else
+//     console.log(`${i + 1} you withdrew: ${Math.abs(movement)}`)
+// }
+
+
+// console.log("---- FOREACH ---")
+// // how to use forEach method - using a callback function
+// // .forEach(callback function)
+// // parameter of the callback function matters
+// // function(movement, i , array) 
+// //          current value, current index, current array we looping
+// movements.forEach(function (movement,i, array) {
+//   if (movement > 0) {
+//     console.log(`ForEach ${i + 1} - you deposited:  ${movement}`)
+//   } else
+//     console.log(`ForEach ${i + 1}- you withdrew: ${Math.abs(movement)}`)
+// })
+
+// // forEach with maps and sets
+// console.log(` forEach with maps and sets`)
 
 // const currencies = new Map([
+//   //  key , value
 //   ['USD', 'United States dollar'],
 //   ['EUR', 'Euro'],
 //   ['GBP', 'Pound sterling'],
 // ]);
 
-// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// currencies.forEach(function (value, key, map) {
+//   console.log(map)
+//   console.log(key," : ", value)
+// })
 
-/////////////////////////////////////////////////
-let arr = ['a', 'b', 'c', 'd', 'e']
-console.log(arr);
+// // SET
 
-// SLICE Method : select element 
-// not mutate the orginal array
-console.log("slice 2 ", arr.slice(2))
-console.log("slice 2 5",arr.slice(2, 5));
-console.log(arr.slice(-2));
-console.log(arr.slice(-1));
-console.log(arr.slice(1, -2));
-console.log("shadow copy: ", [...arr]);
-
-// SPLICE : remove the element out of the arrr
-// mutate the orginal array
-arr.splice(-1);
-console.log(arr.splice(2));
-console.log(arr);
-
-// REVERSE
-arr = ['a', 'b', 'c', 'd', 'e']
-const arr2 = ['j', 'i', 'h', 'g', 'f'];
-console.log(arr2.reverse());
-
-// CONCAT 
-// append the letters from arr and arr2 to letter
-const letter = arr.concat(arr2);
-console.log(letter);
-console.log([...arr, ...arr2]);
-
-// JOIN
-console.log(letter.join(' - '))
-
-// slice method
-// at method
-
-
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
-
-//  learning about the loop
-for (const movement of movements) {
-  if (movement > 0) {
-    console.log(`you deposited:  ${movement}`)
-  } else  
-    console.log(`you withdrew: ${ Math.abs(movement) }`)
-}
-console.log(` ==== different to display with an index ===`)
-//  [i, movement] : orders matter including current index, current value
-// we need to use .entries() instead
-for (const [i,movement] of movements.entries()) {
-  if (movement > 0) {
-    console.log(`${i+1} you deposited:  ${movement}`)
-  } else
-    console.log(`${i + 1} you withdrew: ${Math.abs(movement)}`)
-}
-
-
-console.log("---- FOREACH ---")
-// how to use forEach method - using a callback function
-// .forEach(callback function)
-// parameter of the callback function matters
-// function(movement, i , array) 
-//          current value, current index, current array we looping
-movements.forEach(function (movement,i, array) {
-  if (movement > 0) {
-    console.log(`ForEach ${i + 1} - you deposited:  ${movement}`)
-  } else
-    console.log(`ForEach ${i + 1}- you withdrew: ${Math.abs(movement)}`)
-})
-
-// forEach with maps and sets
-console.log(` forEach with maps and sets`)
-
-const currencies = new Map([
-  //  key , value
-  ['USD', 'United States dollar'],
-  ['EUR', 'Euro'],
-  ['GBP', 'Pound sterling'],
-]);
-
-currencies.forEach(function (value, key, map) {
-  console.log(map)
-  console.log(key," : ", value)
-})
-
-// SET
-
-console.log("==== With SET === ")
-const currenciesUnique = new Set(['USD', 'GBP', 'USD', 'EUR', 'EUR'])
-//  set doesnt have key or index. so key and value would be the same
-// _ variable is throw away variable. 
-currenciesUnique.forEach(function (value, key, set) {
-  console.log(`${value} : ${key}`)
-})
+// console.log("==== With SET === ")
+// const currenciesUnique = new Set(['USD', 'GBP', 'USD', 'EUR', 'EUR'])
+// //  set doesnt have key or index. so key and value would be the same
+// // _ variable is throw away variable. 
+// currenciesUnique.forEach(function (value, key, set) {
+//   console.log(`${value} : ${key}`)
+// })
 
 ///////////////////////////////////////
 // Coding Challenge #1
@@ -219,23 +237,24 @@ TEST DATA 2: Julia's data [9, 16, 6, 8, 3], Kate's data [10, 5, 6, 1, 4]
 GOOD LUCK 😀
 */
 
-const checkDogs = function (dogsJulia, dogsKate) {
-  const dogsJuliaCorrected = dogsJulia.slice();
-  dogsJuliaCorrected.splice(0, 1)
-  dogsJuliaCorrected.splice(-2)
-  // or .slice(1,3)
+// const checkDogs = function (dogsJulia, dogsKate) {
+//   const dogsJuliaCorrected = dogsJulia.slice();
+//   dogsJuliaCorrected.splice(0, 1)
+//   dogsJuliaCorrected.splice(-2)
+//   // or .slice(1,3)
 
-  const dogs = dogsJuliaCorrected.concat(dogsKate)
-  console.log(dogs)
+//   const dogs = dogsJuliaCorrected.concat(dogsKate)
+//   console.log(dogs)
 
-  //("Dog number 1 is an adult, and is 5 years old") or a puppy ("Dog number 2 is still a puppy 🐶")
-  dogs.forEach(function (dog, i) {
-    if (dog >= 3 ) {
-      console.log(`Dog Number ${i+1} is an adult, and is ${dog} years old`)
-    } else {
-      console.log(`Dog number ${i + 1} is still a puppy 🐶, and is ${dog} years old`)
-    }
-  })
-}
+//   //("Dog number 1 is an adult, and is 5 years old") or a puppy ("Dog number 2 is still a puppy 🐶")
+//   dogs.forEach(function (dog, i) {
+//     if (dog >= 3 ) {
+//       console.log(`Dog Number ${i+1} is an adult, and is ${dog} years old`)
+//     } else {
+//       console.log(`Dog number ${i + 1} is still a puppy 🐶, and is ${dog} years old`)
+//     }
+//   })
+// }
 
-checkDogs([3, 5, 2, 12, 7], [4, 1, 15, 8, 3])
+// checkDogs([3, 5, 2, 12, 7], [4, 1, 15, 8, 3])
+
