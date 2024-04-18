@@ -61,15 +61,35 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
+
+const displayMovements = function (movements) {
+  //  innerHTML is like text content, all html tags will be included in innerHTML
+  containerMovements.innerHTML = 'hohoha hahah default using innerHTML for containerMovements';
+  // or using .textContent = 0; 
+  movements.forEach(function (mov, i) {
+    const type = mov > 0 ? 'deposit' : 'withdrawal'; 
+    const html = `     
+        <div class="movements__row">
+          <div class="movements__type movements__type--${type}">${i+1} ${type}</div>
+          <div class="movements__value">${mov} 000€</div>
+        </div>
+    `;
+    containerMovements.insertAdjacentHTML('afterbegin', html);
+  })
+}
+
+displayMovements(account1.movements);
+
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
 
-const currencies = new Map([
-  ['USD', 'United States dollar'],
-  ['EUR', 'Euro'],
-  ['GBP', 'Pound sterling'],
-]);
+// const currencies = new Map([
+//   ['USD', 'United States dollar'],
+//   ['EUR', 'Euro'],
+//   ['GBP', 'Pound sterling'],
+// ]);
 
 // const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
@@ -142,3 +162,29 @@ movements.forEach(function (movement,i, array) {
   } else
     console.log(`ForEach ${i + 1}- you withdrew: ${Math.abs(movement)}`)
 })
+
+// forEach with maps and sets
+console.log(` forEach with maps and sets`)
+
+const currencies = new Map([
+  //  key , value
+  ['USD', 'United States dollar'],
+  ['EUR', 'Euro'],
+  ['GBP', 'Pound sterling'],
+]);
+
+currencies.forEach(function (value, key, map) {
+  console.log(map)
+  console.log(key," : ", value)
+})
+
+// SET
+
+console.log("==== With SET === ")
+const currenciesUnique = new Set(['USD', 'GBP', 'USD', 'EUR', 'EUR'])
+//  set doesnt have key or index. so key and value would be the same
+// _ variable is throw away variable. 
+currenciesUnique.forEach(function (value, key, set) {
+  console.log(`${value} : ${key}`)
+})
+
