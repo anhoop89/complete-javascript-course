@@ -80,6 +80,22 @@ const displayMovements = function (movements) {
 
 displayMovements(account1.movements);
 
+const user = 'Steven Thomas Williams' // goal stw
+//1st way
+// const username = user.toLowerCase().split(' ');
+// const iniUserName = username.map(word => word.slice(0, 1)).join('');
+// OR
+//console.log(username.map(word => word[0]).join(''))
+// OR
+
+
+const createUsernames = function (user) {
+  const username = user.toLowerCase().split(' ').map(name => name[0]).join('');
+  console.log(username)
+  return username;
+}
+createUsernames('Steven Thomas Williams Anh Ho')
+
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 const eurToUsd = 1.1;
 
