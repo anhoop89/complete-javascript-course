@@ -76,11 +76,20 @@ const displayMovements = function (movements) {
     `;
     containerMovements.insertAdjacentHTML('afterbegin', html);
   })
+
+
 }
 
 displayMovements(account1.movements);
 
-const user = 'Steven Thomas Williams' // goal stw
+
+const calcPrintBalance = function (movements) {
+  // 0 means starting at 0
+  const balance = movements.reduce((acc, cur) => acc + cur, 0);
+  labelBalance.textContent = `${balance} EUR`
+}
+calcPrintBalance(account1.movements);
+
 //1st way
 // const username = user.toLowerCase().split(' ');
 // const iniUserName = username.map(word => word.slice(0, 1)).join('');
@@ -96,10 +105,24 @@ const createUsernames = function (accs) {
   })
 }
 createUsernames(accounts)
-console.log(accounts)
+
+
 
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 const eurToUsd = 1.1;
+
+const deposits = movements.filter(mov => mov > 0);
+const withdrawals = movements.filter(mov => mov < 0);
+const displayBalance = movements.reduce((acc, cur) => acc + cur);
+console.log(displayBalance)
+console.log(deposits);
+console.log(withdrawals)
+const balance = movements.reduce((acc, cur) => acc + cur, 0);
+
+console.log(movements)
+// make sure to initialize the start value 
+const max = movements.reduce((acc, mov) => acc > mov ? acc : mov, movements[0])
+console.log(max)
 
 // const movementsUSD = movements.map(function (mov) {
 //   return mov * eurToUsd
