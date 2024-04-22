@@ -80,6 +80,10 @@ const displayMovements = function (movements) {
 
 displayMovements(account1.movements);
 
+const calBalance = function (movements) {
+  const balance = movements.reduce((acc,move)=> acc+mov, 0)
+}
+
 const user = 'Steven Thomas Williams' // goal stw
 //1st way
 // const username = user.toLowerCase().split(' ');
@@ -89,12 +93,13 @@ const user = 'Steven Thomas Williams' // goal stw
 // OR
 
 
-const createUsernames = function (user) {
-  const username = user.toLowerCase().split(' ').map(name => name[0]).join('');
-  console.log(username)
-  return username;
+const createUsernames = function (accs) {
+  accs.forEach(acc => {
+    acc.owner.toLowerCase().split(' ').map(name => name[0]).join('');
+  })
+  
 }
-createUsernames('Steven Thomas Williams Anh Ho')
+createUsernames(accounts);
 
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 const eurToUsd = 1.1;
@@ -108,6 +113,18 @@ const movementsUSD = movements.map(mov =>  mov * eurToUsd )
 console.log(movements)
 console.log(movementsUSD)
 
+// filter function
+const desposit = movements.filter(mov => mov > 0);
+console.log(desposit);
+
+const withdrawal = movements.filter(mov => mov < 0);
+console.log(withdrawal);
+
+
+const balance = movements.reduce(function (prev, cur) {
+  return prev + cur;
+})
+console.log(balance)
 const movementsUSDfor = []
 
 for (const mov of movements) movementsUSDfor.push(mov * eurToUsd);
