@@ -89,12 +89,14 @@ const user = 'Steven Thomas Williams' // goal stw
 // OR
 
 
-const createUsernames = function (user) {
-  const username = user.toLowerCase().split(' ').map(name => name[0]).join('');
-  console.log(username)
-  return username;
+const createUsernames = function (accs) {
+  accs.forEach((acc) => {
+    // create a new property for the object named username.
+    acc.username = acc.owner.toLowerCase().split(' ').map(name => name[0]).join('');
+  })
 }
-createUsernames('Steven Thomas Williams Anh Ho')
+createUsernames(accounts)
+console.log(accounts)
 
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 const eurToUsd = 1.1;
