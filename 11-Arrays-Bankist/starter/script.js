@@ -157,7 +157,7 @@ console.log(movementsDescriptions)
 // let arr = ['a', 'b', 'c', 'd', 'e']
 // console.log(arr);
 
-// // SLICE Method : select element 
+// // SLICE Method : select element
 // // not mutate the orginal array
 // console.log("slice 2 ", arr.slice(2))
 // console.log("slice 2 5",arr.slice(2, 5));
@@ -177,7 +177,7 @@ console.log(movementsDescriptions)
 // const arr2 = ['j', 'i', 'h', 'g', 'f'];
 // console.log(arr2.reverse());
 
-// // CONCAT 
+// // CONCAT
 // // append the letters from arr and arr2 to letter
 // const letter = arr.concat(arr2);
 // console.log(letter);
@@ -195,7 +195,7 @@ console.log(movementsDescriptions)
 // for (const movement of movements) {
 //   if (movement > 0) {
 //     console.log(`you deposited:  ${movement}`)
-//   } else  
+//   } else
 //     console.log(`you withdrew: ${ Math.abs(movement) }`)
 // }
 // console.log(` ==== different to display with an index ===`)
@@ -213,7 +213,7 @@ console.log(movementsDescriptions)
 // // how to use forEach method - using a callback function
 // // .forEach(callback function)
 // // parameter of the callback function matters
-// // function(movement, i , array) 
+// // function(movement, i , array)
 // //          current value, current index, current array we looping
 // movements.forEach(function (movement,i, array) {
 //   if (movement > 0) {
@@ -242,7 +242,7 @@ console.log(movementsDescriptions)
 // console.log("==== With SET === ")
 // const currenciesUnique = new Set(['USD', 'GBP', 'USD', 'EUR', 'EUR'])
 // //  set doesnt have key or index. so key and value would be the same
-// // _ variable is throw away variable. 
+// // _ variable is throw away variable.
 // currenciesUnique.forEach(function (value, key, set) {
 //   console.log(`${value} : ${key}`)
 // })
@@ -299,3 +299,40 @@ GOOD LUCK 😀
 
 // checkDogs([3, 5, 2, 12, 7], [4, 1, 15, 8, 3])
 
+///////////////////////////////////////
+// Coding Challenge #2
+
+/* 
+Let's go back to Julia and Kate's study about dogs. This time, they want to convert dog ages to human 
+ages and calculate the average age of the dogs in their study.
+
+Create a function 'calcAverageHumanAge', which accepts an arrays of dog's ages ('ages'), and does 
+the following things in order:
+
+1. Calculate the dog age in human years using the following formula: if the dog is <= 2 years old, 
+humanAge = 2 * dogAge. If the dog is > 2 years old, humanAge = 16 + dogAge * 4.
+
+2. Exclude all dogs that are less than 18 human years old (which is the same as keeping dogs that 
+  are at least 18 years old)
+
+3. Calculate the average human age of all adult dogs (you should already know from other challenges
+   how we calculate averages 😉)
+
+4. Run the function for both test datasets
+
+TEST DATA 1: [5, 2, 4, 1, 15, 8, 3]
+TEST DATA 2: [16, 6, 10, 5, 6, 1, 4]
+
+GOOD LUCK 😀
+*/
+
+const calcAverageHumanAge = function (dogAges) {
+  const humanAge = dogAges.map(dogAge => dogAge <= 2 ? 2 * dogAge : 16 + dogAge * 4 )
+  console.log(humanAge)
+  const adult = humanAge.filter(age => age >= 18)
+  console.log(adult)
+  const average = adult.reduce((acc, mov) => acc + mov, 0) / adult.length;
+  console.log(average)
+}
+
+calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3])
