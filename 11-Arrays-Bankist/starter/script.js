@@ -90,6 +90,23 @@ const calcPrintBalance = function (movements) {
 }
 calcPrintBalance(account1.movements);
 
+const calDisplaySummary = function (movements) {
+  const sumIn = movements.filter(mov => mov > 0).reduce((acc, mov) => acc + mov, 0);
+  labelSumIn.textContent = `${sumIn}€`;
+
+  const sumOut = movements.reduce((acc, cur) => acc + cur, 0) - sumIn; 
+  labelSumOut.textContent = `${Math.abs(sumOut)}€`;
+
+  //interest 
+  const interest = movements
+    .filter(mov => mov > 0)
+    .map(deposit => deposit * 1.2 / 100)
+    .filter(i => i >= 1)
+    .reduce((acc, int) => acc + int, 0);
+  labelSumInterest.textContent = `${interest}€`;
+
+}
+calDisplaySummary(account1.movements);
 //1st way
 // const username = user.toLowerCase().split(' ');
 // const iniUserName = username.map(word => word.slice(0, 1)).join('');
@@ -141,10 +158,6 @@ const withdrawal = movements.filter(mov => mov < 0);
 console.log(withdrawal);
 
 
-const balance = movements.reduce(function (prev, cur) {
-  return prev + cur;
-})
-console.log(balance)
 const movementsUSDfor = []
 
 for (const mov of movements) movementsUSDfor.push(mov * eurToUsd);
