@@ -358,3 +358,15 @@ const calcAverageHumanAge2 = (dogAges) =>
   .filter(age => age >= 18).reduce((acc, mov, i, arr) => acc + mov / arr.length, 0) ; 
 
 console.log(calcAverageHumanAge2([5, 2, 4, 1, 15, 8, 3]))
+
+
+//  find method
+const firstWithdrawal = movements.find(mov => mov < 0) 
+console.log(movements)
+ 
+console.log(firstWithdrawal)
+
+console.log(accounts)
+
+const account = accounts.find(acc => acc.owner === 'Jessica Davis');
+console.log(account)
