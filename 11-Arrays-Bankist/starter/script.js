@@ -90,6 +90,23 @@ const calcPrintBalance = function (movements) {
 }
 calcPrintBalance(account1.movements);
 
+const calDisplaySummary = function (movements) {
+  const sumIn = movements.filter(mov => mov > 0).reduce((acc, mov) => acc + mov, 0);
+  labelSumIn.textContent = `${sumIn}€`;
+
+  const sumOut = movements.reduce((acc, cur) => acc + cur, 0) - sumIn; 
+  labelSumOut.textContent = `${Math.abs(sumOut)}€`;
+
+  //interest 
+  const interest = movements
+    .filter(mov => mov > 0)
+    .map(deposit => deposit * 1.2 / 100)
+    .filter(i => i >= 1)
+    .reduce((acc, int) => acc + int, 0);
+  labelSumInterest.textContent = `${interest}€`;
+
+}
+calDisplaySummary(account1.movements);
 //1st way
 // const username = user.toLowerCase().split(' ');
 // const iniUserName = username.map(word => word.slice(0, 1)).join('');
@@ -109,6 +126,47 @@ createUsernames(accounts)
 
 
 
+<<<<<<< HEAD
+=======
+const deposits = movements.filter(mov => mov > 0);
+const withdrawals = movements.filter(mov => mov < 0);
+const displayBalance = movements.reduce((acc, cur) => acc + cur);
+console.log(displayBalance)
+console.log(deposits);
+console.log(withdrawals)
+const balance = movements.reduce((acc, cur) => acc + cur, 0);
+
+console.log(movements)
+// make sure to initialize the start value 
+const max = movements.reduce((acc, mov) => acc > mov ? acc : mov, movements[0])
+console.log(max)
+
+// const movementsUSD = movements.map(function (mov) {
+//   return mov * eurToUsd
+// })
+
+const movementsUSD = movements.map(mov =>  mov * eurToUsd )
+
+console.log(movements)
+console.log(movementsUSD)
+
+// filter function
+const desposit = movements.filter(mov => mov > 0);
+console.log(desposit);
+
+const withdrawal = movements.filter(mov => mov < 0);
+console.log(withdrawal);
+
+
+const movementsUSDfor = []
+
+for (const mov of movements) movementsUSDfor.push(mov * eurToUsd);
+
+const movementsDescriptions = movements.map((mov, i) => 
+  `Movement ${i + 1}: You ${mov > 0 ? 'deposited' : 'withdrew'} ${Math.abs(mov)}`
+)
+console.log(movementsDescriptions)
+>>>>>>> f89754b7403122be5db5d465d28a91da90292cc0
 // /////////////////////////////////////////////////
 // /////////////////////////////////////////////////
 // // LECTURES
