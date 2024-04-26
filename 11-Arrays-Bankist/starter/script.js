@@ -108,39 +108,7 @@ createUsernames(accounts)
 
 
 
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
-const eurToUsd = 1.1;
 
-const deposits = movements.filter(mov => mov > 0);
-const withdrawals = movements.filter(mov => mov < 0);
-const displayBalance = movements.reduce((acc, cur) => acc + cur);
-console.log(displayBalance)
-console.log(deposits);
-console.log(withdrawals)
-const balance = movements.reduce((acc, cur) => acc + cur, 0);
-
-console.log(movements)
-// make sure to initialize the start value 
-const max = movements.reduce((acc, mov) => acc > mov ? acc : mov, movements[0])
-console.log(max)
-
-// const movementsUSD = movements.map(function (mov) {
-//   return mov * eurToUsd
-// })
-
-const movementsUSD = movements.map(mov =>  mov * eurToUsd )
-
-console.log(movements)
-console.log(movementsUSD)
-
-const movementsUSDfor = []
-
-for (const mov of movements) movementsUSDfor.push(mov * eurToUsd);
-
-const movementsDescriptions = movements.map((mov, i) => 
-  `Movement ${i + 1}: You ${mov > 0 ? 'deposited' : 'withdrew'} ${Math.abs(mov)}`
-)
-console.log(movementsDescriptions)
 // /////////////////////////////////////////////////
 // /////////////////////////////////////////////////
 // // LECTURES
@@ -325,6 +293,39 @@ TEST DATA 2: [16, 6, 10, 5, 6, 1, 4]
 
 GOOD LUCK 😀
 */
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+const eurToUsd = 1.1;
+
+const deposits = movements.filter(mov => mov > 0);
+const withdrawals = movements.filter(mov => mov < 0);
+const displayBalance = movements.reduce((acc, cur) => acc + cur);
+console.log(displayBalance)
+console.log(deposits);
+console.log(withdrawals)
+const balance = movements.reduce((acc, cur) => acc + cur, 0);
+
+console.log(movements)
+// make sure to initialize the start value 
+const max = movements.reduce((acc, mov) => acc > mov ? acc : mov, movements[0])
+console.log(max)
+
+// const movementsUSD = movements.map(function (mov) {
+//   return mov * eurToUsd
+// })
+
+const movementsUSD = movements.map(mov => mov * eurToUsd)
+
+console.log(movements)
+console.log(movementsUSD)
+
+const movementsUSDfor = []
+
+for (const mov of movements) movementsUSDfor.push(mov * eurToUsd);
+
+const movementsDescriptions = movements.map((mov, i) =>
+  `Movement ${i + 1}: You ${mov > 0 ? 'deposited' : 'withdrew'} ${Math.abs(mov)}`
+)
+console.log(movementsDescriptions)
 
 const calcAverageHumanAge = function (dogAges) {
   const humanAge = dogAges.map(dogAge => dogAge <= 2 ? 2 * dogAge : 16 + dogAge * 4 )
@@ -338,4 +339,22 @@ const calcAverageHumanAge = function (dogAges) {
   console.log(average)
 }
 
-calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3])
+// calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3])
+
+//  PIPELINE
+// it's hard to debug when using pipeline.
+const totalDepositsUSD = movements
+  .filter(mov => mov > 0)
+  .map(mov => mov * eurToUsd)
+  .reduce((acc, mov) => acc + mov, 0);
+console.log(totalDepositsUSD)
+
+
+// coding challenge #3
+
+const calcAverageHumanAge2 = (dogAges) =>
+  dogAges
+  .map(dogAge => (dogAge <= 2 ? 2 * dogAge : 16 + dogAge * 4))
+  .filter(age => age >= 18).reduce((acc, mov, i, arr) => acc + mov / arr.length, 0) ; 
+
+console.log(calcAverageHumanAge2([5, 2, 4, 1, 15, 8, 3]))
