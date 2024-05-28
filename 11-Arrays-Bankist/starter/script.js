@@ -160,6 +160,23 @@ btnTransfer.addEventListener('click', function (e) {
   }
 })
 
+btnClose.addEventListener('click', function (e) {
+  e.preventDefault();
+
+  if (currentAccount.username === inputCloseUsername.value && currentAccount.pin === Number(inputClosePin.value)) {
+    console.log("close the account")
+    // find the index in order to delete the account from the array
+    const index = accounts.findIndex(acc => acc.username === currentAccount.username);
+    console.log(index)
+    // splice removes the element from the array and returns it  
+    accounts.splice(index, 1);
+    console.log(accounts)
+    // hide ui
+    containerApp.style.opacity = 0;
+  } 
+  
+  inputCloseUsername.value = inputClosePin.value = '';
+})
 // /////////////////////////////////////////////////
 // /////////////////////////////////////////////////
 // // LECTURES
